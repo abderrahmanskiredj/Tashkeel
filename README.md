@@ -8,7 +8,7 @@ In the "Training" directory, we offer all the necessary training scripts. This s
 
 Finally, in the "Evaluation" directory, we undertake a detailed assessment of our Tashkeel models against the benchmarks. This structured approach ensures a thorough and methodical evaluation process, allowing for clear insights into the performance and effectiveness of the proposed models on the specified datasets.
 
-I have open-sourced the model trained on Fadel Augmented Data on https://huggingface.co/AbderrahmanSkiredj1/Al_Laythi_System
+I have open-sourced the model trained on Fadel Augmented Data on https://huggingface.co/AbderrahmanSkiredj1/Ad-dabit-Al-lughawi
 
 ## Model Performance Evaluation
 
