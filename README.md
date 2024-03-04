@@ -4,5 +4,6 @@ In this repository, we conduct a comprehensive evaluation of the methodology out
 
 The "Preprocess Test Data" directory is dedicated to the initial processing of these test sets, transforming them into a structured format suitable for token classification. This involves the creation of "tokens" along with their corresponding "labels," enabling a more structured and analysis-ready dataset.
 
-Finally, in the "Evaluation" directory, we undertake a detailed assessment of our Tashkeel models against the benchmarks. This structured approach ensures a thorough and methodical evaluation process, allowing for clear insights into the performance and effectiveness of the proposed models on the specified datasets.
+In the "Training" directory, we offer all the necessary training scripts. This section is essential for users who wish to replicate or understand the training process of the models in detail.
 
+Finally, in the "Evaluation" directory, we undertake a detailed assessment of our Tashkeel models against the benchmarks. This structured approach ensures a thorough and methodical evaluation process, allowing for clear insights into the performance and effectiveness of the proposed models on the specified datasets.
