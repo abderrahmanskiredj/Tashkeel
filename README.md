@@ -33,7 +33,7 @@ Note: The result for the Mishkal model is specifically sourced from "Fadel, A., 
 | Abbad and Xiong (2021) Model                              | 3.6%  | 8.55% |
 | Abbad and Xiong (2020) Model                              | 3.39% | 9.94% |
 | Madhfar and Qamar (2020) Model                            | 1.13% | 4.43% |
-| Our Model trained on Abbad data                           | 1.012%| 3.18% |
+| Our Model trained on Abbad data                           | **1.012%**| **3.18%** |
 
 **Table 8**  
 Evaluating our approach against other ATD models in literature: Benchmarking with the dataset of Abbad Tashkeela. All results are obtained under the conditions of 'with case ending' set to True and 'including diacritics' set to True. All results for models other than ours are specifically sourced from (Abbad and Xiong, 2020).
