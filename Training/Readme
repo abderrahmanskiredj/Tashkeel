@@ -1,0 +1,48 @@
+####### Pre-finetuning scripts
+
+
+## Prefine-tune arabertv02 on Classical Arabic as MLM
+python run_mlm.py --model_name_or_path "aubmindlab/bert-base-arabertv02" --per_device_train_batch_size 64 --do_train --output_dir "../arabertv02_prefinetuned_CA" --max_seq_length 512 --num_train_epochs 20 --save_steps 3000 --dataset_name "AbderrahmanSkiredj1/MLM_classical_arabic_openiti" --overwrite_output_dir --logging_steps 50
+
+
+## Prefine-tune arabertv02 on POSTAG as MLM
+python run_mlm.py --model_name_or_path "aubmindlab/bert-base-arabertv02" --per_device_train_batch_size 40 --do_train --output_dir "../arabertv02_prefinetuned_postag" --max_seq_length 512 --num_train_epochs 20 --save_steps 3000 --dataset_name 'AbderrahmanSkiredj1/MLM_classical_arabic_postag_openiti' --overwrite_output_dir --logging_steps 50
+
+
+## Prefine-tune arabertv02 on Segmentation as MLM
+python run_mlm.py --model_name_or_path "aubmindlab/bert-base-arabertv02" --per_device_train_batch_size 40 --do_train --output_dir "../arabertv02_prefinetuned_segmentation" --max_seq_length 512 --num_train_epochs 15 --save_steps 2500 --dataset_name 'AbderrahmanSkiredj1/MLM_classical_arabic_segmentation_openiti' --overwrite_output_dir --logging_steps 50
+
+
+
+## Prefine-tune arabertv02 on CA + POSTAG + Segmentation
+python run_mlm.py --model_name_or_path "aubmindlab/bert-base-arabertv02" --per_device_train_batch_size 40 --do_train --output_dir "../arabertv02_prefinetuned_CA_postag_segmentation" --max_seq_length 512 --num_train_epochs 20 --save_steps 3000 --dataset_name "AbderrahmanSkiredj1/MLM_classical_arabic_postag_and_segmentation_and_MLM_openiti" --overwrite_output_dir --logging_steps 50
+
+
+## Pre-finetune resulting model on ATD as MLM
+python run_mlm.py --model_name_or_path "../arabertv02_prefinetuned_CA_postag_segmentation" --per_device_train_batch_size 40 --do_train --output_dir "../arabertv02_prefinetuned_CA_postag_segmentation_then_ATD_MLM" --max_seq_length 512 --num_train_epochs 10 --save_steps 2500 --dataset_name 'AbderrahmanSkiredj1/clean_tashkeela_full_as_mlm_short_sentences' --overwrite_output_dir --logging_steps 50
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+####### Finetuning scripts
+Using the Ablation notations:
+
+# TCO
+python run_ner.py --model_name_or_path "aubmindlab/bert-base-arabertv02" --overwrite_output_dir --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir
+
+# CA
+python run_ner.py --model_name_or_path "../arabertv02_prefinetunedCA_tashkeel_fadel" --overwrite_output_dir --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_prefinetunedCA_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir --logging_steps 50 
+
+# POS
+python run_ner.py --model_name_or_path "../arabertv02_prefinetuned_postag" --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_prefinetuned_POSTAG_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir --logging_steps 50
+
+# Segm
+python run_ner.py --model_name_or_path "../arabertv02_prefinetuned_segmentation" --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_prefinetuned_Segm_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir --logging_steps 50
+
+# CA-POS-Seg
+python run_ner.py --model_name_or_path "../arabertv02_prefinetuned_CA_postag_segmentation" --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_prefinetunedCA_POSTAG_Segm_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir --logging_steps 50
+
+# Full
+python run_ner.py --model_name_or_path "../arabertv02_prefinetuned_CA_postag_segmentation_then_ATD_MLM"  --per_device_train_batch_size 108 --do_train --output_dir "../arabertv02_prefinetuned_CAPostagSegm_then_ATDMLM_then_tashkeel_fadel" --max_seq_length 512 --num_train_epochs 40 --save_steps 500 --dataset_name 'AbderrahmanSkiredj1/tashkeela_50k_as_pos_undiac_ok' --overwrite_output_dir --logging_steps 50
+
+
+
+
